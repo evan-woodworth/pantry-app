@@ -18,6 +18,11 @@ export default class pdfGenerator extends PureComponent {
     this.props.list.forEach((item, idx) => {
       y += 25
       doc.text(50, y, `${idx + 1}. ${item.title}`)
+      doc.text(
+        50,
+        500,
+        'This export function is brought to you by Jesse Jensen and team'
+      )
     })
 
     doc.setFont('courier')
