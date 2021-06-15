@@ -84,4 +84,6 @@ This project was created with the following technologies:
 
 ### Data Relationship
 
-![DataRelationship]((/https://github.com/evan-woodworth/pantry-app/blob/master/Pantry%20ERD.pdf))
+<img src="Pantry ERD.pdf"
+     alt="Start up screen"
+     style="float: left; margin-right: 10px;" />
