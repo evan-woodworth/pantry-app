@@ -5,7 +5,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Recipe = (props) => {
   const data = props.location.state.meal ? props.location.state.meal : props.recipe;
-  const mealId = data.idMeal;
+  const mealId = data.idMeal ? data.idMeal : data.mealId;
   const userData = props.location.state.user ? props.location.state.user : props.user;
   const [recipe, setRecipe] = useState(data);
   console.log('USER INFORMATION: ', userData);

@@ -23,7 +23,6 @@ const Navbar = (props) => {
               <li className="nav-item"><NavLink className="nav-link" to="/pantry"> {" "}Pantry{" "} </NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/myrecipes"> {" "}My Recipes{" "} </NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/cooknow"> {" "}Cook Now{" "} </NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/addrecipe"> {" "}Add Recipe{" "} </NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/profile"> {" "}Profile{" "} </NavLink></li>
               <li className="nav-item"><span onClick={props.handleLogout} className="nav-link logout-link"> {" "}Logout{" "} </span></li>
             </ul>
