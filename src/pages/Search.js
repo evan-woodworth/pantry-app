@@ -3,24 +3,26 @@ import {Link} from "react-router-dom";
 
 
 const Search = (props) => {
-  console.log('SEARCH PROPS: ', props);
-  const data = props.location.state;
-  const user = props.location.user;
+  const data = props.location.state.result;
+  const user = props.location.state.user;
 
   if (data) {
-    var searchList = data.map((item, index) => {
+    var searchList = data.map((meal, index) => {
       let location = {
         pathname: '/recipe',
-        state: item, user
+        state: {
+          meal: meal,
+          user: user
+        }
       };
       return(
         <article className="meal" key={index}>
           <div className="img-container">
-            <img src={item.strMealThumb} alt={item.strMeal} />
+            <img src={meal.strMealThumb} alt={meal.strMeal} />
           </div>
           <div className="meal-footer">  
-            <h3>{item.strMeal}</h3>
-            <p>{item.strCategory}</p>
+            <h3>{meal.strMeal}</h3>
+            <p>{meal.strCategory}</p>
             <Link to={location} user={user} className="btn btn-primary btn-details"> Details </Link>
           </div>
         </article>

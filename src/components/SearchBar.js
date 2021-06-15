@@ -5,6 +5,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 const SearchBar = (props) => {
+  console.log(props)
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('name');
   const [result, setResult] = useState(null);
@@ -19,13 +20,16 @@ const SearchBar = (props) => {
   };
 
   useEffect(() => {
-    if (props.history.location.state === false) {
+    if (props.history.location.state == false) {
       console.log('Nothing!');
       alert('No search matches.');
     } else if (result) {
       props.history.push({
         pathname: '/search',
-        state: result, user
+        state: {
+          result: result, 
+          user: user
+        }
       });
     }
   }, [props.history, user, result]);

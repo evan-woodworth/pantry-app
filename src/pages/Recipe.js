@@ -4,10 +4,9 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 const Recipe = (props) => {
-  console.log('RECIPE PROPS: ', props)
-  const data = props.location.state ? props.location.state : props.recipe;
+  const data = props.location.state.meal ? props.location.state.meal : props.recipe;
   const mealId = data.idMeal;
-  const userData = props.location.user ? props.location.user : props.user;
+  const userData = props.location.state.user ? props.location.state.user : props.user;
   const [recipe, setRecipe] = useState(data);
   console.log('USER INFORMATION: ', userData);
 
@@ -41,7 +40,6 @@ const Recipe = (props) => {
       })
     }
   }
-  console.log(ingredients);
 
   const handleFavorite = () => {
     let payload = {
@@ -50,14 +48,14 @@ const Recipe = (props) => {
         email: userData.email,
         name: userData.name
       },
-      name: data.strMeal,
-      mealId: data.idMeal,
-      category: data.strCategory,
-      area: data.strArea,
-      thumbnail: data.strMealThumb,
-      tags: data.strTags,
-      instruction: data.strInstructions,
-      youtubeUrl: data.strYoutube,
+      name: recipe.strMeal,
+      mealId: recipe.idMeal,
+      category: recipe.strCategory,
+      area: recipe.strArea,
+      thumbnail: recipe.strMealThumb,
+      tags: recipe.strTags,
+      instruction: recipe.strInstructions,
+      youtubeUrl: recipe.strYoutube,
       ingredients
     };
     console.log(payload.ingredients);
