@@ -1,30 +1,15 @@
-// Generate a shopping list from recipe’s ingredients
-
-// When a shopping list is generated:
-// A shopping list generated locally in an object
-// - if user is signed in, they can save the shopping list (list is created in the database and associated with a pantry)
-
-// Shopping list generation:
-// Pull ingredients from recipe -> recipeIngredients
-// Create an empty shopping list -> shoppingList
-// If the user is signed in
-// pull ingredients from a pantry -> pantryIngredients
-// Iterate through recipeIngredients
-// If recipeIngredient is in pantryIngredients, add recipeIngredient to shoppingList
-// If user is not signed in, all recipeIngredients are added to shoppingList
-
-import React, { useState, useEffect, PureComponent } from 'react'
+import React, { useState, useEffect } from 'react'
 import GenPDF from './GenPDF'
-import jsPDF from 'jspdf'
-import Data from './Ingredients'
-import Api from '../AppTwo'
-import { AppProvider } from '../context'
-import MealList from '../components/RecipeApi/MealList'
-import SearchForm from '../components/RecipeApi/SearchForm'
 
-const getLocalStorage = () => {
+const getLocalStorage = (props) => {
+  const ingredients = props.location.state.ingredients
+  if (ingredients) {
+    console.log('props', JSON.stringify(ingredients))
+    localStorage.setItem('list', JSON.stringify(ingredients))
+  }
   let list = localStorage.getItem('list')
   if (list) {
+    console.log(list)
     return (list = JSON.parse(localStorage.getItem('list')))
   } else {
     return []
@@ -35,7 +20,7 @@ const Alert = ({ type, msg, removeAlert, list }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       removeAlert()
-    }, 3000)
+    }, 5000)
     return () => clearTimeout(timeout)
   }, [list])
   return <p className={`alert ${type}`}>{msg}</p>
@@ -76,7 +61,7 @@ const List = ({ items, removeItem, editItem }) => {
 
 function App(props) {
   const [name, setName] = useState('')
-  const [list, setList] = useState(getLocalStorage())
+  const [list, setList] = useState(getLocalStorage(props))
   const [isEditing, setIsEditing] = useState(false)
   const [editID, setEditID] = useState(null)
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' })
@@ -127,11 +112,6 @@ function App(props) {
     setEditID(id)
     setName(specificItem.title)
   }
-  useEffect(() => {
-    if (props.shoppingList) {
-      localStorage.setItem('list', JSON.stringify(props.shoppingList))
-    }
-  }, [])
 
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list))
@@ -170,16 +150,6 @@ function App(props) {
       <div>
         <GenPDF list={list} />
       </div>
-      {/* <div>
-        <Data />
-      </div> */}
-      {/* <div>
-        <AppProvider>
-          <Api />
-          <SearchForm />
-          <MealList />
-        </AppProvider>
-      </div> */}
     </section>
   )
 }
