@@ -84,4 +84,4 @@ This project was created with the following technologies:
 
 ### Data Relationship
 
-![DataRelationship](/https://github.com/evan-woodworth/pantry-app/blob/master/Pantry%20ERD.pdf)
+![DataRelationship]((/https://github.com/evan-woodworth/pantry-app/blob/master/Pantry%20ERD.pdf))
