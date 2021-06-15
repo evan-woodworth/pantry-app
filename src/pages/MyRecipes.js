@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 const MyRecipes = (props) => {
+  console.log(props)
   const [userRecipes, setUserRecipes] = useState([])
+  const user = props.user
 
   useEffect(() => {
-    axios
-      .get(`${REACT_APP_SERVER_URL}/api/users/recipes`)
-      .then((response) => {
+    axios.get(`${REACT_APP_SERVER_URL}/api/users/recipes`)
+    .then((response) => {
         console.log(response.data)
         setUserRecipes(response.data)
       })
@@ -23,7 +24,10 @@ const MyRecipes = (props) => {
     var recipesList = userRecipes.map((recipe, index) => {
       let location = {
         pathname: '/editrecipe',
-        state: recipe,
+        state: {
+         meal: recipe,
+         user: user 
+        }
       }
       return (
         <article className='meal' key={index}>
@@ -33,10 +37,7 @@ const MyRecipes = (props) => {
           <div className='meal-footer'>
             <h3>{recipe.name}</h3>
             <p>{recipe.category}</p>
-            <Link to={location} className='btn btn-primary btn-details'>
-              {' '}
-              Details{' '}
-            </Link>
+            <Link to={location} className='btn btn-primary btn-details'> {' '}Details{' '} </Link>
           </div>
         </article>
       )

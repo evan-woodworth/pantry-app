@@ -4,18 +4,16 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 const Recipe = (props) => {
-  const data = props.location.state.meal ? props.location.state.meal : props.recipe;
-  const mealId = data.idMeal;
+  const data = props.location.state.meal ? props.location.state.meal : props.meal;
+  const mealId = data.idMeal ? data.idMeal : data.mealId;
   const userData = props.location.state.user ? props.location.state.user : props.user;
   const [recipe, setRecipe] = useState(data);
-  console.log('USER INFORMATION: ', userData);
 
   useEffect(() => {
     axios.get(`${REACT_APP_SERVER_URL}/api/mealdb/id/${mealId}`)
     .then(response => {
       let meal = response.data.meals[0];
       setRecipe(meal);
-      console.log('Meal Information:', meal)
     }).catch(error => {
       console.log('------------ RECIPE ERROR ------------');
       console.log(error)
@@ -58,10 +56,8 @@ const Recipe = (props) => {
       youtubeUrl: recipe.strYoutube,
       ingredients
     };
-    console.log(payload.ingredients);
     axios.put(`${REACT_APP_SERVER_URL}/api/users/recipes`, payload)
     .then(response => {
-      console.log(response.data);
       alert(`${data.strMeal} added to favorites!`);
     }).catch(error => {
       console.log('------------ FAVORITE ERROR ------------')
@@ -83,7 +79,7 @@ const Recipe = (props) => {
       pathname: '/shoppinglist', 
       state: {
         ingredients: ingredientList,
-      user: userData }
+        user: userData }
     })
   }) 
 
