@@ -1,6 +1,6 @@
 # Recipantry
 
-[Click here to visit Recipantry]https://recipantry.herokuapp.com/
+[Click here to visit Recipantry] https://recipantry.herokuapp.com/
 
 ## Table of Contents
 
