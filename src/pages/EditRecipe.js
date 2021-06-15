@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import EditPage from './EditPage';
+
 
 const EditRecipe = (props) => {
-    console.log(props)
-    const {name, instruction, area, category, thumbnail, youtubeUrl} = props.location.state
-    const ingredient = props.location.state.ingredients
+    const {name, instruction, area, category, thumbnail, youtubeUrl} = props.location.state.meal;
+    const ingredient = props.location.state.meal.ingredients;
+    const [showForm, setShowForm] = useState(false);
 
     const ingredientList = ingredient.map((item, index) => {
         return (<li key={index}>{item.name}: {item.measurement}</li>)
@@ -15,6 +17,14 @@ const EditRecipe = (props) => {
     } else if (youtubeUrl === "" || [] || false) {
       youtube = ''
     };
+
+    const handleEdit = () => {
+        setShowForm(true);
+    }
+
+    if (showForm) {
+        return <EditPage user={props.location.state.user} meal={props.location.state.meal}/>
+    }
 
     return (
         <section className='section meal-section'>
@@ -30,7 +40,8 @@ const EditRecipe = (props) => {
                     <hr/>
                     <p><span className='food-data'> Ingredients: </span>{ingredientList}</p>
                     <hr/>
-                    <button onClick={props.history.goBack} className="btn btn-primary">Back</button>
+                    <button onClick={props.history.goBack} className="btn btn-primary"> Back </button>
+                    <button onClick={handleEdit} className="btn btn-secondary"> Edit </button>
                 </div>
             </div>
         </section>
