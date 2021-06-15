@@ -9,7 +9,7 @@ const Recipe = (props) => {
   const mealId = data.idMeal;
   const userData = props.location.user ? props.location.user : props.user;
   const [recipe, setRecipe] = useState(data);
-  console.log(userData);
+  console.log('USER INFORMATION: ', userData);
 
   useEffect(() => {
     axios.get(`${REACT_APP_SERVER_URL}/api/mealdb/id/${mealId}`)
@@ -25,10 +25,9 @@ const Recipe = (props) => {
 
   let video = '';
   if (recipe.strYoutube) {
-    video = <a href={recipe.strYoutube}>Instructional Video</a>
+    video = <a href={recipe.strYoutube}>Here</a>
   } else if (recipe.strYoutube === "" || [] || false) {
-    // video = <p>No video instructions</p>
-    video = 'No video instructions'
+    video = 'Not available'
   };
 
   let ingredients = [];
@@ -42,6 +41,7 @@ const Recipe = (props) => {
       })
     }
   }
+  console.log(ingredients);
 
   const handleFavorite = () => {
     let payload = {
@@ -56,7 +56,7 @@ const Recipe = (props) => {
       area: data.strArea,
       thumbnail: data.strMealThumb,
       tags: data.strTags,
-      instructions: data.strInstructions,
+      instruction: data.strInstructions,
       youtubeUrl: data.strYoutube,
       ingredients
     };
@@ -64,45 +64,18 @@ const Recipe = (props) => {
     axios.put(`${REACT_APP_SERVER_URL}/api/users/recipes`, payload)
     .then(response => {
       console.log(response.data);
+      alert(`${data.strMeal} added to favorites!`);
     }).catch(error => {
       console.log('------------ FAVORITE ERROR ------------')
       console.log(error);
     })
   }
 
-  const fetchRecipes = () => {
-    axios.get(`${REACT_APP_SERVER_URL}/api/recipes`)
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log('------------ RETRIEVE ERROR ------------')
-      console.log(error);
-    })
-  }
+  const ingredientsList = ingredients.map((item, index) => {
+    return (<li key={index}>{item.name}: {item.measurement}</li>)
+  })
 
   return (
-    // <div>
-    //   <h3>{recipe.strMeal}</h3>
-    //   <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meals-center" style={{height: "500px", width: "500px"}}/>
-    //   <h5>Instructions</h5>
-    //   <p>{recipe.strInstructions}</p>
-    //   {video}
-    //   <hr/>
-    //   <h6>Ingredients Needed</h6>
-    //   <ul>
-    //     <li>{recipe.strIngredient1}</li>
-    //     <li>{recipe.strIngredient2}</li>
-    //     <li>{recipe.strIngredient3}</li>
-    //     <li>{recipe.strIngredient4}</li>
-    //     <li>{recipe.strIngredient5}</li>
-    //     <li>{recipe.strIngredient6}</li>
-    //     <li>{recipe.strIngredient7}</li>
-    //     <li>{recipe.strIngredient8}</li>
-    //     <li>{recipe.strIngredient9}</li>
-    //   </ul>
-    //   <button onClick={props.history.goBack} className="btn btn-primary">Back</button>
-    // </div>
-
     <section className='section meal-section'>
       <h2 className='section-title'>{recipe.strMeal}</h2>
       <div className='food'>
@@ -110,12 +83,14 @@ const Recipe = (props) => {
         <div className='food-info'>
           <p><span className='food-data'> Name:</span>{recipe.strMeal}</p>
           <p><span className='food-data'> Category:</span>{recipe.strCategory}</p>
-          <p><span className='food-data'> Info:</span>{recipe.strArea}</p>
+          <p><span className='food-data'> Area:</span>{recipe.strArea}</p>
           <p><span className='food-data'> Instructions:</span>{recipe.strInstructions}</p>
           <p><span className='food-data'> Video Instructions:</span>{video}</p>
-          <button onClick={handleFavorite} className="btn btn-secondary">Favorite</button>
+          <hr/>
+          <p><span className='food-data'> Ingredients:</span>{ingredientsList}</p>
+          <hr/>
+          {userData ? <button onClick={handleFavorite} className="btn btn-secondary">Favorite</button> : <></>}
           <button onClick={props.history.goBack} className="btn btn-primary">Back</button>
-          <button onClick={fetchRecipes} className="btn btn-secondary">Fetch Data</button>
         </div>
       </div>
     </section>
@@ -123,135 +98,3 @@ const Recipe = (props) => {
 };
 
 export default Recipe;
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-
-// // import userEvent from '@testing-library/user-event';
-
-
-// const RecipeInfo = (props) => {
-
-
-
-//   const [recipes, setRecipes] = useState([])
-
-//   useEffect(() => {
-//     getRecipes();
-//   }, [])
-
-//   useEffect(() => {
-//     console.log(recipes)
-//     console.log(recipes)
-//   }, [])
-
-
-//   const getRecipes = () => {
-//     axios.get(`https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=52772`)
-//       .then((response) => {
-//         const allRecipe = response.data.meals[0]
-//         console.log(allRecipe)
-//         setRecipes(allRecipe)
-//       })
-//       .catch((error) => {
-//         console.log(`Hers's the error you made: ${error}`)
-//       })
-//   };
-
-
-
-
-//   let ingredients = [];
-
-//   for (let i = 0; i < 20; i++) {
-//     let arrayIngredient = recipes[`strIngredient${i}`]
-//     let arrayMeasurement = recipes[`strMeasure${i}`]
-//     if (arrayIngredient) {
-//       ingredients.push({
-//         name: arrayIngredient,
-//         measurement: arrayMeasurement
-//       })
-//     }
-
-
-//   }
-//   //  function for ingredients and measurement
-//   const ingredientsList = ingredients.map(index => (
-//     <li>{index.name}, {index.measurement}</li>
-//   ))
-
-
-//   //   const newTag = recipes.strTags.slice()
-//   //   recipes.strTags
-//   // }
-
-
-
-
-
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     let strMeal = e.target.strMeal.value
-//     let strInstructions = e.target.strInstructions.value
-//     let strTags = e.target.strTags;
-//     // reset();
-
-//   }
-
-
-
-
-
-//   return (
-
-
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <input type="hidden" name="name" value={recipes.strMeal} />
-//         <input type="hidden" name="instructions" value={recipes.strInstructions} />
-//         <input type="hidden" name="mealId" value={recipes.idMeal} />
-//         <input type="hidden" name="ingredients" value={ingredients} />
-//         <input type="hidden" name="public" value="true" />
-
-
-//         {/* //// display the label and inputs elements */}
-//         <label for="favorites">Add to Favorites :</label>
-
-//         <select name="favorites" id="favorites">
-//           <option value="yesFavorite">Add to Favorites</option>
-//           <option value="noFavorites">just checking</option>
-//         </select>
-//         <input type="submit" value="Add to Fovorites" />
-
-//         <hr />
-
-//         <h2 id="strMeal" >{recipes.strMeal}</h2>
-//         <label id="strInstructions"  >{recipes.strInstructions}</label>
-//         <h5>Ingredients:</h5>
-//         <ul >
-
-//           {ingredientsList}
-
-//         </ul>
-//         <h5 id="strTags" >{recipes.strTags}</h5>
-//         <br />
-//         <img src={recipes.strMealThumb} />
-//         <br />
-//         <a href="{recipes.strYoutube}" target="_blank">Youtube</a>
-//         <br />
-
-
-
-
-
-//       </form>
-//       <button onClick={props.history.goBack}>Return </button>
-//     </div >
-
-
-//   )
-// }
-// export default RecipeInfo
