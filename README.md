@@ -84,6 +84,6 @@ This project was created with the following technologies:
 
 ### Data Relationship
 
-<img src="Pantry ERD.pdf"
+<img src="PantryERD.jpeg"
      alt="Start up screen"
      style="float: left; margin-right: 10px;" />
