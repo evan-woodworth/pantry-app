@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 import GenPDF from './GenPDF'
 
 const getLocalStorage = (props) => {
-  const ingredients = props.location.state.ingredients
+  let ingredients = '';
+  if (props.location.state) {
+  ingredients = props.location.state.ingredients
+  }
   if (ingredients) {
     console.log('props', JSON.stringify(ingredients))
     localStorage.setItem('list', JSON.stringify(ingredients))
