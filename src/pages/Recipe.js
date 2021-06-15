@@ -75,6 +75,20 @@ const Recipe = (props) => {
     return (<li key={index}>{item.name}: {item.measurement}</li>)
   })
 
+  const handleShoppingList = (() => {
+    const ingredientList = []
+    ingredients.forEach((ing) => {
+      ingredientList.push(
+        {title: ing.name})
+    })
+    props.history.push({
+      pathname: '/shoppinglist', 
+      state: {
+        ingredients: ingredientList,
+      user: userData }
+    })
+  }) 
+
   return (
     <section className='section meal-section'>
       <h2 className='section-title'>{recipe.strMeal}</h2>
@@ -89,6 +103,7 @@ const Recipe = (props) => {
           <hr/>
           <p><span className='food-data'> Ingredients:</span>{ingredientsList}</p>
           <hr/>
+          <button onClick={handleShoppingList} className="btn btn-secondary">Generate Shopping List</button>
           {userData ? <button onClick={handleFavorite} className="btn btn-secondary">Favorite</button> : <></>}
           <button onClick={props.history.goBack} className="btn btn-primary">Back</button>
         </div>
