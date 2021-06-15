@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Recipantry
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Click here to visit Recipantry]https://recipantry.herokuapp.com/
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [What is Recipantry?](#what-is)
+- [Setup](#setup)
+- [Technologies Used](#technologies)
+- [Process Work](#process-work)
+- [Routes](#routes)
 
-### `npm start`
+### What is Recipantry
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Recipantry is the only application you need to organize all your food preparation. With Recipantry you can:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Get inspiration with recipes for meals you would like to prepare
+- Track the foods you currently have in your pantry at home
+- Discover recipes you can cook with the ingredients already in your house
+- Create your own custom recipes alongside the ones provided by the application
+- Generate a shopping list you can take with you based on the ingredients you don't have and the recipes you want to cook
 
-### `npm test`
+With Recipantry you will never lack for cooking inspiration and never make your own shopping list again!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Setup
 
-### `npm run build`
+1. Fork and Clone this repository and the accompanying pantry-database repository.
+2. Install MongoDB and plug the URI in the .env file of the pantry-databse repository.
+3. Generate an API token at https://wwww.themealdb.com
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project was created with the following technologies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Express
+- Axios
+- MongoDB
+- Mongoose
+- Passport
+- dotenv
+- React-Router-DOM
+- GenPDF.js
 
-### `npm run eject`
+### Process Work
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Created a working directory with two sub-directories, one for front end, one for backend. 
+2. Seeded Database with ingredients and Categories from the API
+3. Built backend routes in order to create reuseable code for data access functions
+4. Built models for the data that would be leveraged by the front end components
+5. Built React components for pieces of the application that would be leveraged by multiple pages
+6. Build React components for individual pages that provide the user with a specific functionality.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Routes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Method | Path | Purpose |
+| ------ | ---- | ------- |
+| GET | /category/id/ | Fetch a category by it's ID |
+| GET | /category/name/ | Fetch a category by it's name |
+| GET | /catgory/ | Fetch all categories |
+| GET | /ingredients/id/ | Fetch an ingredient by it's ID |
+| GET | /ingredients/name/ | Fetch an ingredient by it's name |
+| GET | /ingredients/ | Fetch all ingredients |
+| GET | /mealdb/searchType/ | Fetch pre-defined URLS from the API|
+| GET | /pantries/id/ | Fetch a pantry by it's ID |
+| GET | /pantries/name/ | Fetch a pantry by it's name |
+| PUT | /pantries/ingredients/ | Add an ingredient to a users pantry |
+| GET | /pantries/ | Fetch all pantries for a user |
+| POST | /pantries/create/ | Create a pantry |
+| POST | /pantries/shoppinglist/ | Create a shopping list based on a pantry |
+| PUT | /pantries/addIngredient/ | Create a new ingredient |
+| PUT | /pantries/deleteIngredient/ | remove an ingredient from a pantry |
+| GET | /recipes/id/ | Fetch a recipe by it's ID |
+| GET | /recipes/name/ | Fetch a recipe by it's name |
+| GET | /recipes/all/ | Fetch all recipes |
+| GET | /users/profile/ | Fetch a user's profile |
+| GET | /users/recipes/ | Fetch a user's saved recipes |
+| GET | /users/pantries/ | Fetch a user's pantries |
+| GET | /users/shoppingLists/ | Fetch a user's shopping lists |
+| POST | /users/signup/ | Provide a user's signup data to the database |
+| POST | /users/login/ | Provide a user's login data |
+| PUT | /users/recipes/ | Provide a user's saved recipes |
+| PUT | /users/pantries/ | Provide a user's pantries |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

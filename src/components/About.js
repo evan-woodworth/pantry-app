@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
     return (
         <div>
-            <h1>We Are Recipantry</h1>
+            <h1>We Are Recipantry!</h1>
             <h2>Effortless Grocery Management</h2>
             <h4>Recipantry is the only application you need to organize all your food preparation.</h4>
             <p>With Recipantry you are able to: </p>
