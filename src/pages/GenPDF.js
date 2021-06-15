@@ -6,9 +6,6 @@ export default class pdfGenerator extends PureComponent {
     super(props)
     this.state = {}
   }
-  // const itemList = this.props.list.map(item =>(
-  //   doc.text(50,y,item)
-  // ))
 
   jsPdfGenerator = () => {
     console.log(this.props)
@@ -26,7 +23,6 @@ export default class pdfGenerator extends PureComponent {
     })
 
     doc.setFont('courier')
-    // doc.text(20, 30, 'This is text with courier font')
     doc.save('generated.pdf')
   }
 

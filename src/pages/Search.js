@@ -10,7 +10,7 @@ const Search = (props) => {
   if (data) {
     var searchList = data.map((item, index) => {
       let location = {
-        pathname: `/recipe/`,
+        pathname: '/recipe',
         state: item, user
       };
       return(
@@ -21,7 +21,7 @@ const Search = (props) => {
           <div className="meal-footer">  
             <h3>{item.strMeal}</h3>
             <p>{item.strCategory}</p>
-            <Link to={location} user={user}className="btn btn-primary btn-details"> Details </Link>
+            <Link to={location} user={user} className="btn btn-primary btn-details"> Details </Link>
           </div>
         </article>
       );

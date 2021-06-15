@@ -23,6 +23,7 @@ import CookNow from './pages/CookNow'
 import Search from './pages/Search'
 import ShoppingList from './pages/ShoppingList'
 import Recipe from './pages/Recipe'
+import EditRecipe from './pages/EditRecipe'
 import AddRecipe from './pages/AddRecipe'
 
 
@@ -83,6 +84,7 @@ function App() {
             <PrivateRoute path='/profile' component={Profile} user={currentUser} handleLogout={handleLogout} />
             <PrivateRoute path='/pantry' component={Pantry} user={currentUser} />
             <PrivateRoute path='/myrecipes' component={MyRecipes} user={currentUser} />
+            <PrivateRoute path='/editrecipe' component={EditRecipe} user={currentUser} />
             <PrivateRoute path='/cooknow' component={CookNow} user={currentUser} />
             <PrivateRoute path='/addrecipe' component={AddRecipe} user={currentUser} />
           </Switch>
