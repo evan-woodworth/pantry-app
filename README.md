@@ -74,6 +74,7 @@ This project was created with the following technologies:
 | GET | /recipes/id/ | Fetch a recipe by it's ID |
 | GET | /recipes/name/ | Fetch a recipe by it's name |
 | GET | /recipes/all/ | Fetch all recipes |
+| PUT | /recipes/edit/ | Edit a user's recipe |
 | GET | /users/profile/ | Fetch a user's profile |
 | GET | /users/recipes/ | Fetch a user's saved recipes |
 | GET | /users/pantries/ | Fetch a user's pantries |
