@@ -1,6 +1,6 @@
 # Recipantry
 
-[Click here to visit Recipantry]https://recipantry.herokuapp.com/
+## https://recipantry.herokuapp.com/
 
 ## Table of Contents
 
@@ -9,6 +9,7 @@
 - [Technologies Used](#technologies)
 - [Process Work](#process-work)
 - [Routes](#routes)
+- [Data Relationship](#data-relationship)
 
 ### What is Recipantry
 
@@ -82,3 +83,8 @@ This project was created with the following technologies:
 | PUT | /users/recipes/ | Provide a user's saved recipes |
 | PUT | /users/pantries/ | Provide a user's pantries |
 
+### Data Relationship
+
+<img src="PantryERD.jpeg"
+     alt="Start up screen"
+     style="float: left; margin-right: 10px;" />
