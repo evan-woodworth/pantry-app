@@ -82,3 +82,6 @@ This project was created with the following technologies:
 | PUT | /users/recipes/ | Provide a user's saved recipes |
 | PUT | /users/pantries/ | Provide a user's pantries |
 
+### Data Relationship
+
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/8d6a9c19-2fbb-44fd-9b97-ddf537e53c49" id="6Q_LNIr9sLxF"></iframe></div>
