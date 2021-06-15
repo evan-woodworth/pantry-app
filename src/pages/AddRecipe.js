@@ -16,7 +16,7 @@ const AddRecipe = (props) => {
   const [tags, setTags] = useState('');
   const [youtube, setYoutube] = useState('');
 
-// handle input change
+// handle input changes
 const handleInputChange = (e, index) => {
   const { name, value } = e.target;
   const list = [...ingredientInput];

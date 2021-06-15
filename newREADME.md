@@ -30,7 +30,7 @@ With Pantry you will never lack for cooking inspiration and never make your own 
 
 ### Technologies
 
-This project was created with:
+This project was created with the following technologies:
 
 - React
 - Express
