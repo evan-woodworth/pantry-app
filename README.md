@@ -9,6 +9,7 @@
 - [Technologies Used](#technologies)
 - [Process Work](#process-work)
 - [Routes](#routes)
+- [Data Relationship](#data-relationship)
 
 ### What is Recipantry
 
