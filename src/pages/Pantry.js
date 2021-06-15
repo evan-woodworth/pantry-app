@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
+
 // Display ingredients in a pantry
 
 const Pantry = (props) => {
@@ -68,14 +69,14 @@ const Pantry = (props) => {
   }
 
   const ingDisplay = ingredientList.map((ing,idx)=>(
-    <li key={idx}>
-      {ing}<button onClick={e=>deleteIng(e, ing)}>Remove from Pantry</button>
+    <li className="ing" key={idx}>
+      <div>{ing}</div><button onClick={e=>deleteIng(e, ing)}>Remove from Pantry</button>
       {/* implement note feature here */}
     </li>
   ))
 
   const remainIngDisplay = ingsToDisplay.slice(0,(ingsToDisplay.length<25?ingsToDisplay.length:25)).map((ing, idx)=>(
-    <li key={idx}>{ing}<button onClick={e=>addIng(e, ing)}>Add to Pantry</button></li>
+    <li className="ing" key={idx}><div>{ing}</div><button onClick={e=>addIng(e, ing)}>Add to Pantry</button></li>
   ))
 
   const handleFilter = (e) => {

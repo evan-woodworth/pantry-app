@@ -57,7 +57,7 @@ const Recipe = (props) => {
       ingredients
     };
     axios.put(`${REACT_APP_SERVER_URL}/api/users/recipes`, payload)
-    .then(response => {
+    .then(() => {
       alert(`${data.strMeal} added to favorites!`);
     }).catch(error => {
       console.log('------------ FAVORITE ERROR ------------')

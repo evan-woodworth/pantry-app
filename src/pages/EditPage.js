@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -58,7 +59,13 @@ const EditPage = (props) => {
             instruction: newInstruction,
             youtubeUrl: newVideo
         }
-        axios.put(`${REACT_APP_SERVER_URL}/api/users/edit`, payload);
+        axios.put(`${REACT_APP_SERVER_URL}/api/recipes/edit`, payload)
+        .then(() => {
+            alert(`${name} updated!`);
+        }).catch(error => {
+            console.log('------------ FAVORITE ERROR ------------');
+            console.log(error);
+        });
     }
 
     let youtube = '';
@@ -75,7 +82,7 @@ const EditPage = (props) => {
                 <div className='food'>
                     <img src={thumbnail} alt={name} />
                     <div className='food-info'>
-                        <p><span className='food-data'> Name: </span>
+                        <p><span className='food-data'>Name: </span>
                             <input type='text' value={newName.value} placeholder={name} onChange={handleName}/> </p>
                         <p><span className='food-data'>Category: </span> 
                             <input type='text' value={newCategory.value} placeholder={category} onChange={handleCategory}/> </p>
@@ -86,8 +93,7 @@ const EditPage = (props) => {
                         <p><span className='food-data'>Video Instructions: </span> 
                             <input type='text' value={newVideo.value} placeholder='' onChange={handleVideo}/></p>
                         <hr/>
-                        <p><span className='food-data'>Ingredients: </span> 
-                            <input type='text' value={newIngredients.value} placeholder='' onChange={handleIngredients}/> </p>
+                        <p><span className='food-data'>Ingredients: </span> {ingredientList} </p>
                         <hr/>
                         <button onClick={handleSubmit} className="btn btn-primary"> Submit </button>
                     </div>
