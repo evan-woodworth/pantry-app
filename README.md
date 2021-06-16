@@ -1,19 +1,19 @@
-# Recipantry
+# ReciPantry
 
 ## https://recipantry.herokuapp.com/
 
 ## Table of Contents
 
-- [What is Recipantry?](#what-is)
+- [What is ReciPantry?](#what-is)
 - [Setup](#setup)
 - [Technologies Used](#technologies)
 - [Process Work](#process-work)
 - [Routes](#routes)
 - [Data Relationship](#data-relationship)
 
-### What is Recipantry
+### What is ReciPantry
 
-Recipantry is the only application you need to organize all your food preparation. With Recipantry you can:
+ReciPantry is the only application you need to organize all your food preparation. With ReciPantry you can:
 
 - Get inspiration with recipes for meals you would like to prepare
 - Track the foods you currently have in your pantry at home
@@ -21,7 +21,7 @@ Recipantry is the only application you need to organize all your food preparatio
 - Create your own custom recipes alongside the ones provided by the application
 - Generate a shopping list you can take with you based on the ingredients you don't have and the recipes you want to cook
 
-With Recipantry you will never lack for cooking inspiration and never make your own shopping list again!
+With ReciPantry you will never lack for cooking inspiration and never make your own shopping list again!
 
 ### Setup
 

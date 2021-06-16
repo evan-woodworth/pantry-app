@@ -54,10 +54,10 @@ function CookNow(props) {
         if (!ingList.includes(recipeIngredient.name)) {
           haveIngredients = false;
         }
-        if (haveIngredients) {
-          cookRecipeList.push(oneRecipe);
-        }
       })
+      if (haveIngredients) {
+        cookRecipeList.push(oneRecipe);
+      }
     })
     console.log("Recipe cook list", cookRecipeList)
     setRecipesCookNow(cookRecipeList);

@@ -5,8 +5,7 @@ const Footer = () => {
     <footer className='footer bg-dark'>
       <div className='container text-center'>
         <span className='text-muted'>
-          @2021 Built by Jesse Jensen, Evan Woodworth, Thomas Duong, Paul Knick,
-          Daniel Lafontant
+          @2021 ReciPantry - Your Kitchen is Waiting
         </span>
       </div>
     </footer>
