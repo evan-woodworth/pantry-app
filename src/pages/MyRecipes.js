@@ -8,16 +8,26 @@ const MyRecipes = (props) => {
   const [userRecipes, setUserRecipes] = useState([])
   const user = props.user
 
-  useEffect(() => {
+  const getUserRecipes = () => {
+    console.log('Getting Recipes')
     axios.get(`${REACT_APP_SERVER_URL}/api/users/recipes`)
     .then((response) => {
-        console.log(response.data)
-        setUserRecipes(response.data)
-      })
-      .catch((error) => {
-        console.log('------------ MYRECIPE ERROR ------------')
-        console.log(error)
-      })
+      console.log(response.data)
+      setUserRecipes(response.data)
+    })
+    .catch((error) => {
+      console.log('------------ MYRECIPE ERROR ------------')
+      console.log(error)
+    })
+  }
+
+  const handleRemove = async (e,recipeId) => {
+    const response = await axios.delete(`${REACT_APP_SERVER_URL}/api/users/recipes/${recipeId}`);
+    getUserRecipes();
+  }
+
+  useEffect(() => {
+    getUserRecipes();
   }, [])
 
   if (userRecipes) {
@@ -38,6 +48,7 @@ const MyRecipes = (props) => {
             <h3>{recipe.name}</h3>
             <p>{recipe.category}</p>
             <Link to={location} className='btn btn-primary btn-details'> {' '}Details{' '} </Link>
+            <button className='btn btn-primary btn-details' onClick={e=>handleRemove(e,recipe._id)} >{' '}Remove{' '}</button>
           </div>
         </article>
       )
@@ -51,7 +62,7 @@ const MyRecipes = (props) => {
       <section>
         <h1 className='section-title'> My Recipes </h1>
         <div className='meals-center'>
-          {userRecipes.length ? recipesList : <p> ...Loading... </p>}
+          {userRecipes.length ? recipesList : <p> You do not have any favorited recipes! </p>}
         </div>
       </section>
     </div>
