@@ -44,7 +44,9 @@ function CookNow(props) {
       id: pantId
     }
     const ingListResponse = await axios.put(`${REACT_APP_SERVER_URL}/api/pantries/ingredients`, payload);
-    const ingList = ingListResponse.data.ingredientList;
+    const ingListData = ingListResponse.data.ingredientList;
+    const ingList = []
+    ingListData.forEach(ing=>ingList.push(ing.toLowerCase()))
     console.log("pantry ingredients",ingList);
     let cookRecipeList = [];
 
@@ -52,7 +54,7 @@ function CookNow(props) {
       let haveIngredients = true;
       oneRecipe.ingredients.forEach((recipeIngredient) => {
         console.log(recipeIngredient)
-        if (!ingList.includes(recipeIngredient.name)) {
+        if (!ingList.includes(recipeIngredient.name.toLowerCase())) {
           haveIngredients = false;
         }
       })
