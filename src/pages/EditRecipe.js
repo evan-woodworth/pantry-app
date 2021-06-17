@@ -41,7 +41,7 @@ const EditRecipe = (props) => {
                     <p><span className='food-data'> Ingredients: </span>{ingredientList}</p>
                     <hr/>
                     <button onClick={props.history.goBack} className="btn btn-primary"> Back </button>
-                    <button onClick={handleEdit} className="btn btn-secondary"> Edit </button>
+                    {/* <button onClick={handleEdit} className="btn btn-secondary"> Edit </button> */}
                 </div>
             </div>
         </section>
