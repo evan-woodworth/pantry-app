@@ -18,7 +18,7 @@ export default class pdfGenerator extends PureComponent {
       doc.text(
         50,
         500,
-        'This export function is brought to you by Jesse Jensen and team'
+        'This shopping list was generated from ReciPantry'
       )
     })
 

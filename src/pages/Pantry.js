@@ -70,13 +70,13 @@ const Pantry = (props) => {
 
   const ingDisplay = ingredientList.map((ing,idx)=>(
     <li className="ing" key={idx}>
-      <div>{ing}</div><button onClick={e=>deleteIng(e, ing)}>Remove from Pantry</button>
+      <div>{ing}</div><button onClick={e=>deleteIng(e, ing)}>Remove</button>
       {/* implement note feature here */}
     </li>
   ))
 
-  const remainIngDisplay = ingsToDisplay.slice(0,(ingsToDisplay.length<25?ingsToDisplay.length:25)).map((ing, idx)=>(
-    <li className="ing" key={idx}><div>{ing}</div><button onClick={e=>addIng(e, ing)}>Add to Pantry</button></li>
+  const remainIngDisplay = ingsToDisplay.slice(0,(ingsToDisplay.length<24?ingsToDisplay.length:24)).map((ing, idx)=>(
+    <li className="ing" key={idx}><div>{ing}</div><button onClick={e=>addIng(e, ing)}>Add</button></li>
   ))
 
   const handleFilter = (e) => {
@@ -95,14 +95,14 @@ const Pantry = (props) => {
   return (
     <div>
       <h1>My Pantry</h1>
+      <h3>Ingredients in my pantry:</h3>
       <div className="userIngredients">
-        <h3>Ingredients in my pantry:</h3>
         <ul className="ingredientList">
           {ingDisplay}
         </ul>
       </div>
+      <h3>Ingredients not in my pantry:</h3>
       <div className="allIngredients">
-        <h3>Ingredients not in my pantry:</h3>
         <label htmlFor="ing-filter">Filter for Ingredients </label>
         <input type="text" name="ing-filter" id="ing-filter"
         value={ingFilter} onChange={e=>handleFilter(e)} />

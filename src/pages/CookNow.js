@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import {Link} from "react-router-dom";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
@@ -64,21 +65,42 @@ function CookNow(props) {
     setFinishedLoading(true);
 
   },[])
-  
   if (!finishedLoading) {
     return (<p>...Loading</p>)
   }
+  if (recipesCookNow) {
+    var recipeList = recipesCookNow.map((meal, index) => {
+      let location = {
+        pathname: '/recipe',
+        state: {
+          meal: meal,
+          user: user
+        }
+      };
+      return(
+        <article className="meal" key={index}>
+          <div className="img-container">
+            <img src={meal.thumbnail} alt={meal.name} />
+          </div>
+          <div className="meal-footer">  
+            <h3>{meal.name}</h3>
+            <p>{meal.category}</p>
+            <Link to={location} user={user} className="btn btn-primary btn-details"> Details </Link>
+          </div>
+        </article>
+      );
+    })
+  } else {
+    return <p>You do not have enough ingredients for any of your favorite meals!</p>
+  }
+
   return (
-    <div>
-      <h1>Cook Now</h1>
-      <ul>
-        {recipesCookNow.map((recipe) => (
-        <li className="ing">
-          <div>{recipe.name}</div>
-          <button onClick={e=>handleRecipe(e, recipe)}>View Details</button>
-        </li>))}
-      </ul>
-    </div>
+    <section>
+      <h2 className='section-title'>Cook Now</h2>
+      <div className='meals-center'>
+        {recipesCookNow.length ? recipeList : <p> You do not have enough ingredients for any of your favorite meals! </p>}
+      </div>
+    </section>
   )
 };
 
