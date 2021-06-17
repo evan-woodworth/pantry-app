@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 const MyRecipes = (props) => {
-  console.log(props)
+  // console.log(props)
   const [userRecipes, setUserRecipes] = useState([])
   const user = props.user
 
@@ -12,7 +12,7 @@ const MyRecipes = (props) => {
     console.log('Getting Recipes')
     axios.get(`${REACT_APP_SERVER_URL}/api/users/recipes`)
     .then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
       setUserRecipes(response.data)
     })
     .catch((error) => {
