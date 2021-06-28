@@ -19,7 +19,7 @@ const About = () => {
                 <div className="teamCard">
                         <p className="teamTitle">Evan Woodworth</p>
                         <a href="https://linkedin.com/in/evan-woodworth">LinkedIn</a>
-                        <img src="https://media-exp3.licdn.com/dms/image/D5635AQFVazJGt9Y3uA/profile-framedphoto-shrink_200_200/0/1623166739346?e=1623967200&v=beta&t=nZ45topzwu9ItDiZ840ZwUBuCJ47zn0DeGjQfK6yx70" alt="profile picture" />
+                        <img src="/img/evan-profile-pic.jpeg" alt="profile picture" />
                 </div>
                 <div className="teamCard">
                         <p className="teamTitle">Jesse Jensen</p>
