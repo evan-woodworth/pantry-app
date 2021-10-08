@@ -141,6 +141,9 @@ p {
   h1, h2, h3, h4 {
     line-height: 1;
   }
+  #navbarsExample07 {
+    max-height: 70px;
+  }
 }
 /*  global classes */
 
@@ -421,4 +424,15 @@ input:focus::placeholder {
   height: 300px;
   overflow: scroll;
   border: 1px solid #ccc;
+}
+@media screen and (max-width: 576px) {
+  .teamContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .teamCard {
+    width: 200px;
+  }
 }

@@ -11,12 +11,14 @@ const Navbar = (props) => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarsExample07">
+        <div className="collapse navbar-collapse bg-dark" id="navbarsExample07">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">{" "}<NavLink className="nav-link" to="/about"> {" "}About{" "} </NavLink></li>
             <li className="nav-item">{" "}<NavLink className="nav-link" to="/shoppinglist"> {" "}Shopping List{" "} </NavLink></li>
           </ul>
-          <SearchBar user={props.user}/>
+          <ul className="navbar-nav">
+            <li className="nav-item"><SearchBar user={props.user}/></li>
+          </ul>
 
           {props.isAuth ? (
             <ul className="navbar-nav ml-auto">

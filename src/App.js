@@ -24,7 +24,6 @@ import Search from './pages/Search'
 import ShoppingList from './pages/ShoppingList'
 import Recipe from './pages/Recipe'
 import EditRecipe from './pages/EditRecipe'
-import AddRecipe from './pages/AddRecipe'
 
 
 // Private Route Component
@@ -86,7 +85,6 @@ function App() {
             <PrivateRoute path='/myrecipes' component={MyRecipes} user={currentUser} />
             <PrivateRoute path='/editrecipe' component={EditRecipe} user={currentUser} />
             <PrivateRoute path='/cooknow' component={CookNow} user={currentUser} />
-            <PrivateRoute path='/addrecipe' component={AddRecipe} user={currentUser} />
           </Switch>
         </div>
         <Footer />
